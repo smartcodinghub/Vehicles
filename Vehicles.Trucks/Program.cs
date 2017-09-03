@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Docker.Trucks
+namespace Vehicles.Trucks
 {
     public class Program
     {

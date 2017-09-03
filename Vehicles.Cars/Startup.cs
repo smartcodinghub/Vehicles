@@ -7,8 +7,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System.Data;
+using Npgsql;
 
-namespace Docker.Cars
+namespace Vehicles.Cars
 {
     public class Startup
     {
@@ -16,17 +18,27 @@ namespace Docker.Cars
 
         public Startup(IHostingEnvironment env)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
-            Configuration = builder.Build();
+            try
+            {
+                var builder = new ConfigurationBuilder()
+                    .SetBasePath(env.ContentRootPath)
+                    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                    .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                    .AddEnvironmentVariables();
+                Configuration = builder.Build();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            /* The connections must be transient, as the Unit Of Work will take care of its lifetime */
+            services.AddTransient<IDbConnection>((s) => new NpgsqlConnection(Configuration.GetConnectionString("Postgres")));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

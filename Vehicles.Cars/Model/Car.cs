@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Dapper.Contrib.Extensions;
 
-namespace Docker.Trucks.Model
+namespace Vehicles.Cars.Model
 {
-    public class Truck
+    [Table("CARS")]
+    public class Car
     {
         public int Id { get; set; }
-
+        
         public String Model { get; set; }
-
+        
         public String Registration { get; set; }
-
+        
         public String Color { get; set; }
-
-        public int Capacity { get; set; }
     }
 }

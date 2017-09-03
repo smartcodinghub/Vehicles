@@ -5,21 +5,19 @@ using System.Text;
 
 namespace Vehicles.Persistence
 {
-    public partial class UnitOfWork : IUnitOfWork
+    public abstract class UnitOfWorkBase : IUnitOfWork
     {
-        private IDbConnection connection;
-        private IDbTransaction transaction;
-        private bool disposed;
+        protected IDbConnection connection;
+        protected IDbTransaction transaction;
+        protected bool disposed;
 
-        public UnitOfWork(IDbConnection connection)
+        public UnitOfWorkBase(IDbConnection connection)
         {
             this.connection = connection;
             this.connection.Open();
 
             this.transaction = this.connection.BeginTransaction();
         }
-
-        partial void ResetRepositories();
 
         public void Commit()
         {
@@ -36,7 +34,6 @@ namespace Vehicles.Persistence
             {
                 transaction.Dispose();
                 transaction = connection.BeginTransaction();
-                ResetRepositories();
             }
         }
 

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Docker.Cars.Model
+namespace Vehicles.Trucks.Model
 {
-    public class Car
+    public class Truck
     {
         public int Id { get; set; }
 
@@ -14,5 +14,7 @@ namespace Docker.Cars.Model
         public String Registration { get; set; }
 
         public String Color { get; set; }
+
+        public int Capacity { get; set; }
     }
 }

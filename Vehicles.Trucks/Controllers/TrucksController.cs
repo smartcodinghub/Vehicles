@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Concurrent;
-using Docker.Trucks.Model;
+using Vehicles.Trucks.Model;
 
-namespace Docker.Trucks.Controllers
+namespace Vehicles.Trucks.Controllers
 {
     [Route("vehicles/[controller]")]
     public class TrucksController : Controller
