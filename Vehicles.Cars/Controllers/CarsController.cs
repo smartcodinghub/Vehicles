@@ -40,9 +40,9 @@ namespace Vehicles.Cars.Controllers
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]Car value)
+        public void Put(int id, [FromBody]Car car)
         {
-            repository.Update(value);
+            repository.Update(car);
         }
 
         [HttpDelete("{id}")]

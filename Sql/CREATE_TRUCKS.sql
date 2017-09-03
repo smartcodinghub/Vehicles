@@ -1,1 +1,11 @@
-﻿
+﻿DROP TABLE IF EXISTS CARS;
+
+CREATE TABLE CARS (
+	Id SERIAL,
+	"Model" VARCHAR(10),
+	"Registration" VARCHAR(7),
+	"Color" VARCHAR(15),
+	"Capacity" INT
+);
+
+CREATE UNIQUE INDEX IDX_CARS_REGISTRATION ON CARS("Registration");

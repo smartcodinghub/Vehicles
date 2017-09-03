@@ -5,50 +5,49 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Concurrent;
 using Vehicles.Trucks.Model;
+using System.Data;
 
 namespace Vehicles.Trucks.Controllers
 {
     [Route("vehicles/[controller]")]
     public class TrucksController : Controller
     {
-        private static readonly ConcurrentDictionary<int, Truck> cars = new ConcurrentDictionary<int, Truck>(
-            new Truck[]
-            {
-                new Truck() { Id = 1, Color = "Green", Model = "Nissan", Registration = "1234 ABC", Capacity = 20 },
-                new Truck() { Id = 2, Color = "Red", Model = "Nissan", Registration = "1234 ABC", Capacity = 20 },
-                new Truck() { Id = 3, Color = "Blue", Model = "Nissan", Registration = "1234 ABC", Capacity = 20 },
-                new Truck() { Id = 4, Color = "Gray", Model = "Nissan", Registration = "1234 ABC", Capacity = 20 },
-                new Truck() { Id = 5, Color = "White", Model = "Nissan", Registration = "1234 ABC", Capacity = 20 }
-            }.ToDictionary(c => c.Id));
+        private TrucksRepository repository;
+
+        public TrucksController(IDbConnection connection)
+        {
+            this.repository = new TrucksRepository(connection);
+
+        }
 
         [HttpGet]
         public IEnumerable<Truck> Get()
         {
-            return cars.Values;
+            return repository.GetAll();
         }
 
         [HttpGet("{id}")]
         public Truck Get(int id)
         {
-            return cars[id];
+            return repository.Get(id);
         }
 
         [HttpPost]
-        public void Post([FromBody]Truck value)
+        public void Post([FromBody]Truck truck)
         {
-            cars.AddOrUpdate(value.Id, value, (i, c) => c);
+            repository.Insert(truck);
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]Truck value)
+        public void Put(int id, [FromBody]Truck truck)
         {
-            cars[id] = value;
+            repository.Update(truck);
         }
 
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            cars.TryRemove(id, out Truck del);
+            repository.Delete(new Truck() { Id = id });
         }
     }
 }
