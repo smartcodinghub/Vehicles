@@ -13,6 +13,12 @@ namespace Vehicles.Persistence
 
         #region Synchronized
 
+        public T this[int id]
+        {
+            get { return Get(id); }
+            set { Update(value); }
+        }
+
         public T Get(int id)
         {
             return this.Connection.Get<T>(id);
