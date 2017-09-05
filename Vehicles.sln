@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sql", "Sql\Sql.csproj", "{2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vehicles.Cars", "Vehicles.Cars\Vehicles.Cars.csproj", "{F799589D-14F2-4230-BC60-66DEA8737424}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vehicles.Trucks", "Vehicles.Trucks\Vehicles.Trucks.csproj", "{4DE44D3F-3AF6-4F4A-B584-991879788832}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vehicles.Trucks", "Vehicles.Trucks\Vehicles.Trucks.csproj", "{4DE44D3F-3AF6-4F4A-B584-991879788832}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vehicles.Authentication", "Vehicles.Authentication\Vehicles.Authentication.csproj", "{72D2DEA6-C992-45EE-9578-D47E182A1C3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{4DE44D3F-3AF6-4F4A-B584-991879788832}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DE44D3F-3AF6-4F4A-B584-991879788832}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DE44D3F-3AF6-4F4A-B584-991879788832}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72D2DEA6-C992-45EE-9578-D47E182A1C3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72D2DEA6-C992-45EE-9578-D47E182A1C3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72D2DEA6-C992-45EE-9578-D47E182A1C3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72D2DEA6-C992-45EE-9578-D47E182A1C3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
